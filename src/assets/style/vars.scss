@@ -1,0 +1,51 @@
+// Colors
+// ---------------------------------
+
+$color-default-black:               #3F3F3F;
+$color-default-white:               #FFFEFB;
+$light-coral:                       #FF8484;
+$whisper:                           #EEEEEE;
+$whisper-light:                     #E5E5E5;
+$pink-swan:                         #B4B4B4;
+$amulet:                            #7BAE73;
+$gun-powder:                        #49485E;
+
+
+// Typography
+// ---------------------------------
+
+$fz-default:                        16px;
+$ff-placeholder:                    'SourceSansPro', sans-serif;
+
+// Shadows
+// ---------------------------------
+
+$default-shadow:                    0px 2px 5px rgba(0, 0, 0, 0.1);
+$block-shadow:                      0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+
+// Radius values
+// ---------------------------------
+
+$common-radius:                     4px;
+$btn-radius:                        10px;
+
+// Viewports
+// ---------------------------------
+
+$vp-320:                            320px;
+$vp-768:                            768px;
+$vp-1024:                           1024px;
+$vp-1280:                           1280px;
+$vp-1440:                           1440px;
+
+// Retina
+// ---------------------------------
+
+$retina-dpi:                        144dpi;
+$retina-dppx:                       1.5dppx;
+
+// Transition
+// ---------------------------------
+
+$transition-funcion:                ease-in;
+$transition-time:                   0.3s;

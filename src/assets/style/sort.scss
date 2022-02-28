@@ -1,0 +1,44 @@
+.sort {
+  position: relative;
+
+  &:hover::before,
+  &:focus-within::before {
+    border-color: $color-default-black;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%) rotate(-45deg);
+    width: 5px;
+    height: 5px;
+    @include transition(border-color);
+    border-bottom: 1px solid $pink-swan;
+    border-left: 1px solid $pink-swan;
+  }
+}
+
+.sort__select {
+  padding: 0.5rem 1rem;
+  @include transition(all);
+  border: none;
+  height: 2.25rem;
+  box-shadow: $default-shadow;
+  border-radius: $common-radius;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $pink-swan;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  outline: none;
+  cursor: pointer;
+  width: 7.625rem;
+
+  &:focus-visible,
+  &:hover {
+    color: $color-default-black;
+  }
+}
