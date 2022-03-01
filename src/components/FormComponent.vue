@@ -14,7 +14,7 @@
     </p>
     <p>
       <label for="price">Цена товара</label>
-      <input type="text" name="price" id="price" required placeholder="Введите цену" pattern="[0-9.]+" v-model="price">
+      <input type="text" name="price" id="price" required placeholder="Введите цену" pattern="[0-9.]+" v-model="price" @input="checkForm">
     </p>
     <button type="submit" :disabled="!isFormValid">Добавить товар</button>
   </form>
@@ -22,15 +22,25 @@
 
 <script>
 export default {
+  data () {
+    return {
+      formPrice: null,
+      isEmailTouched: false
+    }
+  },
+
   computed: {
     isFormValid () {
-      return false
+      return this.checkForm()
     }
   },
   methods: {
-    // isFormValid () {
-    //   return !this.name
-    // }
+    checkForm (evt) {
+      if (evt) {
+        evt.target.value = this.price.replace(/\D/g, '').replace(/^(\d{1,3})(\d{3})/, '$1 $2 ')
+      }
+      console.log(this.price)
+    }
   }
 }
 </script>
