@@ -11,7 +11,7 @@
         <FormComponent class="board__form" :products="products" v-on:sendForm="onSendForm"/>
       </div>
       <transition-group name="list" tag="ul" appear class="board__list">
-        <CardComponent v-for="product in products" :key="product.id" :productData="product" />
+        <CardComponent v-for="product in products" :key="product.id" :productData="product" v-on:deleteCard="onDeleteCard" />
       </transition-group>
     </div>
   </section>
@@ -31,11 +31,32 @@ export default {
     FormComponent,
     CardComponent
   },
+
+  mounted () {
+    if (localStorage.products) {
+      this.products = JSON.parse(localStorage.getItem('products'))
+    } else {
+      this.saveData()
+    }
+  },
+
   methods: {
     onSendForm (data) {
       this.products.push(data)
+      this.saveData()
+    },
+    onDeleteCard (data) {
+      const index = this.products.indexOf(data)
+      if (index !== -1) {
+        this.products.splice(index, 1)
+      }
+      this.saveData()
+    },
+    saveData () {
+      localStorage.setItem('products', JSON.stringify(this.products))
     }
   },
+
   data: () => ({
     products: [
       {

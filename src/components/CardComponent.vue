@@ -10,7 +10,7 @@
       </div>
       <div class="card__price">{{ productData.price }} руб.</div>
     </div>
-    <button class="card__delete-btn" type="button" title="Удалить карточку товара">
+    <button class="card__delete-btn" type="button" title="Удалить карточку товара" v-on:click.prevent.stop="deleteCard">
       <svg class="card__btn-icon" width="16" height="16">
         <use xlink:href="#icon"></use>
       </svg>
@@ -26,6 +26,11 @@ export default {
       default () {
         return {}
       }
+    }
+  },
+  methods: {
+    deleteCard () {
+      this.$emit('deleteCard', this.productData)
     }
   }
 }
