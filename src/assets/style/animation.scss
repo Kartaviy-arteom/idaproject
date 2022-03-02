@@ -1,0 +1,39 @@
+.btn-leave-to {
+  transform: translateY(-50px);
+}
+
+.btn-enter-active {
+  transform: translateY(50px);
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.btn-enter-to {
+  transform: translateY(0);
+}
+
+.btn-enter-active,
+.btn-leave-active {
+  transition: all 1s ease;
+}
+
+.list-leave-to {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+.list-enter-active {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.list-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease;
+}

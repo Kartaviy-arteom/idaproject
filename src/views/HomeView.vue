@@ -8,11 +8,11 @@
     </div>
     <div class="board__wrapper">
       <div class="board__form-wrapper">
-        <FormComponent class="board__form" />
+        <FormComponent class="board__form" :products="products" v-on:sendForm="onSendForm"/>
       </div>
-      <ul class="board__list">
+      <transition-group name="list" tag="ul" appear class="board__list">
         <CardComponent v-for="product in products" :key="product.id" :productData="product" />
-      </ul>
+      </transition-group>
     </div>
   </section>
 </template>
@@ -30,6 +30,11 @@ export default {
     SortComponent,
     FormComponent,
     CardComponent
+  },
+  methods: {
+    onSendForm (data) {
+      this.products.push(data)
+    }
   },
   data: () => ({
     products: [

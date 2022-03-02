@@ -70,19 +70,21 @@
   }
 
   button[type="submit"] {
-    font-family: "Inter" sans-serif;
+    position: relative;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     letter-spacing: -1px;
     color: $color-default-white;
     @include transition(all);
     width: 100%;
-    min-height: 2rem;
+    min-height: 2.25rem;
     padding: 0.625rem 1rem;
     background-color: $amulet;
     border: none;
     border-radius: $btn-radius;
     cursor: pointer;
     outline: none;
+    overflow: hidden;
 
     &:not(disabled):hover,
     &:not(disabled):focus-visible {
@@ -97,6 +99,16 @@
       background-color: $whisper;
       color: $pink-swan;
       cursor: not-allowed;
+    }
+
+    &.sended {
+      background-color: $amulet;
+      color: $color-default-white;
+    }
+
+    span {
+      text-align: center;
+      display: inline-block;
     }
   }
 }
