@@ -1,22 +1,29 @@
 <template>
-  <form class="form" action="" method="post" autocomplete="off" v-on:submit.prevent="sendForm">
+  <form class="form" action="" method="post" autocomplete="off" v-on:submit.prevent.stop="sendForm">
     <p>
       <label for="product-name">Наименование товара</label>
-      <input type="text" name="product-name" id="product-name" required placeholder="Введите наименование товара" v-model="name" @input="checkName">
+      <input type="text" name="product-name" id="product-name" required placeholder="Введите наименование товара" v-model="name" @input="checkName"  @focus="show=false">
     </p>
     <p>
       <label for="description">Описание товара</label>
-      <textarea name="description" id="description" v-model="description" placeholder="Введите описание товара"></textarea>
+      <textarea name="description" id="description" v-model="description" placeholder="Введите описание товара"  @focus="show=false"></textarea>
     </p>
     <p>
       <label for="link">Ссылка на изображение товара</label>
-      <input type="text" name="link" id="link" required placeholder="Введите ссылку" v-model="link" @input="checkLink">
+      <input type="text" name="link" id="link" required placeholder="Введите ссылку" v-model="link" @input="checkLink"  @focus="show=false">
     </p>
     <p>
       <label for="price">Цена товара</label>
-      <input type="text" name="price" id="price" required placeholder="Введите цену" v-model="price" @input="checkPrice">
+      <input type="text" name="price" id="price" required placeholder="Введите цену" v-model="price" @input="checkPrice"  @focus="show=false">
     </p>
-    <button type="submit" :disabled="!isFormValid">Добавить товар</button>
+    <button type="submit" :disabled="!isFormValid" v-bind:class="[show ? 'sended' : '']">
+      <transition name="btn">
+        <span v-if="!show">Добавить товар</span>
+      </transition>
+      <transition name="btn">
+        <span v-if="show">Добавлено</span>
+      </transition>
+    </button>
   </form>
 </template>
 
@@ -32,6 +39,7 @@ export default {
   },
   data () {
     return {
+      show: false,
       isPriceValid: null,
       isNameValid: null,
       isLinkValid: null,
@@ -68,7 +76,7 @@ export default {
       this.isLinkValid = this.isPriceValid = this.isNameValid = null
     },
 
-    sendForm (evt) {
+    sendForm () {
       this.$emit('sendForm', {
         id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1),
         imagePath: this.link,
@@ -77,6 +85,7 @@ export default {
         price: this.price
       })
       this.resetForm()
+      this.show = true
     }
   }
 }

@@ -10,9 +10,9 @@
       <div class="board__form-wrapper">
         <FormComponent class="board__form" :products="products" v-on:sendForm="onSendForm"/>
       </div>
-      <ul class="board__list">
+      <transition-group name="list" tag="ul" appear class="board__list">
         <CardComponent v-for="product in products" :key="product.id" :productData="product" />
-      </ul>
+      </transition-group>
     </div>
   </section>
 </template>
